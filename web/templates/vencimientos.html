@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>📅 Vencimientos</h1>
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>Servicio</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Contraseña</th>
+            <th>Pantalla</th>
+            <th>PIN</th>
+            <th>Vence</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in cuentas %}
+        <tr>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
+            <td>{{ c[4] }}</td>
+            <td>{{ c[5] }}</td>
+            <td>{{ c[6] }}</td>
+            <td>{{ c[7] }}</td>
+
+            {% if c[7] and c[7] < hoy %}
+                <td class="estado vencido">Vencida</td>
+            {% else %}
+                <td class="estado activa">Activa</td>
+            {% endif %}
+
+            <td>
+                <a class="btn renovar" href="/cuentas/renovar/{{ c[0] }}">🔄 Renovar</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

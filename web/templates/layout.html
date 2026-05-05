@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">📊 <span>CORTANA</span></div>
+    <div class="user">
+        {{ request.session.username }}
+    </div>
+</header>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <a href="/" class="{% if title=='Dashboard' %}active{% endif %}">🏠 Dashboard</a>
+        <a href="/cuentas" class="{% if title=='Cuentas' %}active{% endif %}">📺 Cuentas</a>
+        <a href="/usuarios" class="{% if title=='Usuarios' %}active{% endif %}">👥 Usuarios</a>
+        <a href="/vencimientos" class="{% if title=='Vencimientos' %}active{% endif %}">📅 Vencimientos</a>
+        <a href="/logout">🚪 Salir</a>
+    </aside>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+</body>
+</html>
