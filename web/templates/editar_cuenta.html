@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>✏️ Editar cuenta</h1>
+
+<div class="card form-card">
+    <form method="post" class="formulario formulario-columna">
+        <label>Servicio / Categoría</label>
+        <select name="categoria" required>
+            <option value="Netflix" {% if cuenta[1] == "Netflix" %}selected{% endif %}>Netflix</option>
+            <option value="Disney" {% if cuenta[1] == "Disney" %}selected{% endif %}>Disney</option>
+            <option value="HBO" {% if cuenta[1] == "HBO" %}selected{% endif %}>HBO</option>
+            <option value="Amazon" {% if cuenta[1] == "Amazon" %}selected{% endif %}>Amazon</option>
+            <option value="Paramount+" {% if cuenta[1] == "Paramount+" %}selected{% endif %}>Paramount+</option>
+        </select>
+
+        <label>Nombre</label>
+        <input type="text" name="nombre" value="{{ cuenta[2] }}" required>
+
+        <label>Correo</label>
+        <input type="text" name="correo" value="{{ cuenta[3] }}" required>
+
+        <label>Contraseña</label>
+        <input type="text" name="password" value="{{ cuenta[4] }}" required>
+
+        <label>Pantalla</label>
+        <input type="text" name="pantalla" value="{{ cuenta[5] }}" required>
+
+        <label>PIN</label>
+        <input type="text" name="pin" value="{{ cuenta[6] }}" required>
+
+        <label>Vencimiento</label>
+        <input type="date" name="vencimiento" value="{{ cuenta[7] }}">
+
+        <button type="submit">💾 Guardar cambios</button>
+        <a class="btn cancelar" href="/cuentas">⬅ Volver</a>
+    </form>
+</div>
+{% endblock %}
